@@ -15,4 +15,14 @@ function put(data){
     }
 }
 
-getdata();``
+getdata();
+async function getchar(element){
+    var sel = document.querySelector('#oper')
+    const response = await fetch(api_url + '?name=' + element);
+    const data = await response.json();
+    sel.innerHTML =  `<h2> ${data[0].name} </h2>
+    <h4> ${data[0].portrayed} </h4>
+    <img src="${data[0].img}" alt="..." width= 250px>
+    `
+}
+
