@@ -5,7 +5,14 @@ async function getdata() {
     const response = await fetch(api_url);
     const data = await response.json();
     const toma = data.map(m => m.name)
-    console.log(toma)
+    put(toma);
 }
 
-getdata();
+function put(data){
+    var sel = document.querySelector('#sel')
+    for (let element of data) {
+        sel.innerHTML = sel.innerHTML+  `<option selected>${element}</option>`
+    }
+}
+
+getdata();``
