@@ -13,5 +13,10 @@ function put(data){
     }
 }
 
-
 getdata();
+
+function change() {
+    var bel = document.getElementById('alge')
+    bel.placeholder = 'rahu cheba khalil '
+}
+

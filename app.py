@@ -1,6 +1,6 @@
 from os import X_OK
-from flask import Flask ,render_template,url_for ,jsonify
-from flask_restful import Resource, Api
+from flask import Flask ,render_template,url_for ,jsonify ,request
+from flask_restful import Resource, Api 
 
 
 app = Flask(__name__)
@@ -12,10 +12,9 @@ def hello_world():
 
 
 api = Api(app)
-
+x = ['mustapha' , 'belkassem' ,'algeria']
 class HelloWorld(Resource):
-    def get(self):
-        x = ['mustapha' , 'belkassem' ,'algeria']
+    def get(self): 
         return jsonify(x)
 
 todos = {}
@@ -26,6 +25,9 @@ class TodoSimple(Resource):
 
     def put(self, todo_id):
         todos[todo_id] = 'mustapha'
+        return {todo_id: todos[todo_id]}
+    def post(self, todo_id):
+        todos[todo_id] = '1'
         return {todo_id: todos[todo_id]}
 
 
