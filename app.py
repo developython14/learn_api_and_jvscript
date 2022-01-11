@@ -18,6 +18,19 @@ class HelloWorld(Resource):
         x = ['mustapha' , 'belkassem' ,'algeria']
         return jsonify(x)
 
+todos = {}
+
+class TodoSimple(Resource):
+    def get(self, todo_id):
+        return {todo_id: todos[todo_id]}
+
+    def put(self, todo_id):
+        todos[todo_id] = 'mustapha'
+        return {todo_id: todos[todo_id]}
+
+
+api.add_resource(TodoSimple, '/mus/<string:todo_id>')
+
 api.add_resource(HelloWorld, '/tomahook')
 
 
