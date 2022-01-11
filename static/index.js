@@ -16,7 +16,18 @@ function put(data){
 getdata();
 
 function change() {
-    var bel = document.getElementById('alge')
-    bel.placeholder = 'rahu cheba khalil '
+    var bel = document.getElementById('alge');
+    mom = [bel.value ,bel.value ];
+    console.log(mom)
+    console.log(JSON.stringify(mom))
+    fetch('http://127.0.0.1:5000/changex' , {
+        method:'POST',
+        credentials:"include",
+        body: JSON.stringify(mom),
+        cache:"no-cache",
+        Headers: new Headers({
+            "content-type":"application/json"
+        })
+    }).then((res)=>console.log(res)).catch((err) => console.log(err) )
 }
 

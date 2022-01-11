@@ -1,6 +1,10 @@
+from functools import update_wrapper
 from os import X_OK
-from flask import Flask ,render_template,url_for ,jsonify ,request
-from flask_restful import Resource, Api 
+from flask import Flask ,render_template,url_for ,jsonify ,request ,make_response
+from flask.helpers import make_response
+from flask.views import MethodView
+from flask_restful import Resource, Api
+from werkzeug.utils import redirect 
 
 
 app = Flask(__name__)
@@ -31,9 +35,19 @@ class TodoSimple(Resource):
         return {todo_id: todos[todo_id]}
 
 
+@app.route('/changex' ,methods=['GET', 'POST'])
+def change() : 
+    req = request.get_json()
+    print(req)
+    res = make_response(jsonify(req), 200)
+    return res
+
+
 api.add_resource(TodoSimple, '/mus/<string:todo_id>')
 
 api.add_resource(HelloWorld, '/tomahook')
+
+
 
 
 
