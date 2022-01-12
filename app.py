@@ -38,7 +38,8 @@ class TodoSimple(Resource):
 @app.route('/changex' ,methods=['GET', 'POST'])
 def change() : 
     req = request.get_json()
-    print(req)
+    for i in req : 
+        x.append(req[i])
     res = make_response(jsonify(req), 200)
     return res
 
